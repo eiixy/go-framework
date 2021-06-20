@@ -1,6 +1,9 @@
 package routes
 
-import "github.com/gin-gonic/gin"
+import (
+	"eii/internal/account/controllers"
+	"github.com/gin-gonic/gin"
+)
 
 func v1(router *gin.Engine) {
 	v1 := router.Group("/v1")
@@ -12,8 +15,8 @@ func v1(router *gin.Engine) {
 func accounts(group *gin.RouterGroup) {
 	group.Group("accounts")
 	{
-		group.GET("/", GetAccounts)
-		group.POST("/", CreateAccount)
+		group.GET("/", controllers.GetAccounts)
+		group.POST("/", controllers.CreateAccount)
 		group.GET("/:id", GetAccount)
 		group.PUT("/:id", UpdateAccount)
 		group.DELETE("/:id", DeleteAccount)
